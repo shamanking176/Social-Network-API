@@ -92,8 +92,8 @@ const getRandomAssignments = (int) => {
   const results = [];
   for (let i = 0; i < int; i++) {
     results.push({
-      assignmentName: getRandomArrItem(thoughts),
-      score: Math.floor(Math.random() * (99 - 70 + 1) + 70),
+      thoughtText: getRandomArrItem(thoughts),
+      reaction: 0
     });
   }
   return results;

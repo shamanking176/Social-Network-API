@@ -38,7 +38,7 @@ connection.once('open', async () => {
 
   // Add courses to the collection and await the results
   await Thought.collection.insertOne({
-    username: 'UCLA',
+  createdAt: Date.now(),
     
     users: [...users],
   });
