@@ -61,35 +61,35 @@ module.exports = {
     },
   
     // Add an assignment to a student
-    addThought(req, res) {
-      console.log('You are adding an assignment');
+    addFriend(req, res) {
+      console.log('You are adding a friend');
       console.log(req.body);
       User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { assignments: req.body } },
+        { $addToSet: { friends: req.body } },
         { runValidators: true, new: true }
       )
         .then((user) =>
           !user
             ? res
                 .status(404)
-                .json({ message: 'No student found with that ID :(' })
+                .json({ message: 'No friend found with that ID :(' })
             : res.json(user)
         )
         .catch((err) => res.status(500).json(err));
     },
     // Remove assignment from a student
-    removeThought(req, res) {
+    deleteFriend(req, res) {
         User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
+        { $pull: { assignment: { friendId: req.params.friendId } } },
         { runValidators: true, new: true }
       )
         .then((user) =>
           !user
             ? res
                 .status(404)
-                .json({ message: 'No student found with that ID :(' })
+                .json({ message: 'No friend found with that ID :(' })
             : res.json(user)
         )
         .catch((err) => res.status(500).json(err));
